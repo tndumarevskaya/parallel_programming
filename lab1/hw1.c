@@ -125,7 +125,7 @@ void computePositions(int i) {
 
 void *simulate(void *rank) {
     long my_rank = (long)rank;
-    for (int step = 0; step < timeSteps; step++)
+    for (int step = 0; step < timeSteps / DT; step++)
     {
         for (int i = my_rank; i < bodies; i = i + NUM_THREADS)
         {
@@ -205,7 +205,7 @@ int main(int argC, char *argV[])
         start = clock();
         pthread_t* tread_handles = malloc(NUM_THREADS * sizeof(pthread_t));
 
-        printf("Body   :     x              y           vx              vy   ");
+        printf("Body   :     x              y           vx              vy   \n");
         for (long thread = 0; thread < NUM_THREADS; thread++)
         {
             pthread_create(&tread_handles[thread], NULL, simulate, (void*)thread);
