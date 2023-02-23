@@ -37,7 +37,7 @@ void initOutputFile() {
 
     FILE *S1;
     S1 = fopen(outputFilename, "w");
-    fprintf(S1, "Body   :     x              y           vx              vy   ");
+    fprintf(S1, "Body   :     x              y           vx              vy   \n");
     fclose(S1);
 }
 
